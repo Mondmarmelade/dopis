@@ -9,6 +9,14 @@ header {
 
   .logo {
     padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #ededed;
+
+    [data-icon] {
+      font-size: 3.5rem;
+      color: #3661a4;
+      margin-right: 5px;
+    }
   }
 
   a {
