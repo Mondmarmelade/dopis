@@ -1,0 +1,39 @@
+---
+import MainLayout from "../layouts/MainLayout.astro"
+import { createCookie } from "../scripts/createCookie"; 
+
+if (Astro.request.method === "POST") {
+    console.log("POST")
+  try {
+    const data = await Astro.request.formData();
+    const formatData = [{user: data.get("user")}, {pass: data.get("pass")}, {host: data.get("host")}, {port: data.get("port")}]
+
+    createCookie({ data: formatData, context: Astro });
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<MainLayout title="Login">
+	<main>
+		<h1>Enter IMAP Credentials</h1>
+    <form id="imap-form" method="POST" action="/login">
+      <label for="user">Username:</label>
+      <input type="text" id="user" name="user" required />
+      <br />
+      <label for="pass">Password:</label>
+      <input type="password" id="pass" name="pass" required />
+      <br />
+      <label for="host">Host:</label>
+      <input type="text" id="host" name="host" value="imap.ionos.de" required />
+      <br />
+      <label for="port">Port:</label>
+      <input type="number" id="port" name="port" value="993" required />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+	</main>
+</MainLayout>
