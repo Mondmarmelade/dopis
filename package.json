@@ -14,6 +14,7 @@
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "astro": "^4.16.6",
+    "astro-icon": "^1.1.1",
     "dompurify": "^3.1.7",
     "imapflow": "^1.0.164",
     "postal-mime": "^2.3.2",
