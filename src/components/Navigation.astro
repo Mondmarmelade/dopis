@@ -1,5 +1,6 @@
 ---
 import "../styles/Navigation.css"
+import { Icon } from 'astro-icon/components'
 const currentPath = Astro.url.pathname;
 ---
 
@@ -7,10 +8,11 @@ const currentPath = Astro.url.pathname;
   <div class="logo">
     <p>dopis</p>
   </div>
- <a href="/" class={currentPath === '/' ? 'current' : ''}>Dashboard</a>
- <a href="/mails" class={currentPath === '/mails' ? 'current' : ''}>Mails</a>
- <a href="/newsletters" class={currentPath === '/newsletters' ? 'current' : ''}>Newsletters</a>
- <a href="/junk" class={currentPath === '/junk' ? 'current' : ''}>Junk</a>
- <a href="/settings" class={currentPath === '/settings' ? 'current' : ''}>Settings</a>
+ <a href="/" class={currentPath === '/' ? 'current' : ''}>  <Icon name="inbox" /> Dashboard</a>
+ <a href="/mails" class={currentPath === '/mails' ? 'current' : ''}> <Icon name="mail" /> Mails</a>
+ <a href="/newsletters" class={currentPath === '/newsletters' ? 'current' : ''}> <Icon name="news" /> Newsletters</a>
+ <a href="/junk" class={currentPath === '/junk' ? 'current' : ''}> <Icon name="chat_warning" /> Junk</a>
+ <a href="/settings" class={currentPath === '/settings' ? 'current' : ''}> <Icon name="settings" /> Settings</a>
+
  
 </header>

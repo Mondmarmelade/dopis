@@ -14,9 +14,16 @@ header {
   a {
     /* background-color: aqua; */
     padding: 10px;
-
     text-decoration: none;
     color: black;
+    display: flex;
+    align-items: center;
+
+    [data-icon] {
+      font-size: 1.5rem;
+      color: #3661a4;
+      margin-right: 5px;
+    }
   }
 
   a:hover {
