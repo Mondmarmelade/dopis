@@ -3,19 +3,23 @@ import { defineMiddleware } from "astro/middleware";
 export const onRequest = defineMiddleware((context, next) => {
   console.log("MIDDLEWARE");
 
-  if (context.url.pathname === "/login") {
-    return next(); //Let the login page "pass" the middleware to not create a loop
-  }
+  const authCookie = context.cookies.get("auth");
 
-  if (context.cookies.get("auth") !== undefined) {
+  if (authCookie) {
+    // User session exists, allow navigation to the requested page
     return next();
   } else {
-    return context.rewrite(
-      new Request(new URL("/login", context.url), {
-        headers: {
-          "x-redirect-to": context.url.pathname,
-        },
-      })
-    );
+    // User session does not exist, redirect to the login page
+    if (context.url.pathname !== "/login") {
+      return context.rewrite(
+        new Request(new URL("/login", context.url), {
+          headers: {
+            "x-redirect-to": context.url.pathname,
+          },
+        })
+      );
+    }
   }
+
+  return next();
 });

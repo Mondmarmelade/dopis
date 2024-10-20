@@ -7,7 +7,6 @@ if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
     const formatData = [{user: data.get("user")}, {pass: data.get("pass")}, {host: data.get("host")}, {port: data.get("port")}]
-
     createCookie({ data: formatData, context: Astro });
   } catch (error) {
     if (error instanceof Error) {

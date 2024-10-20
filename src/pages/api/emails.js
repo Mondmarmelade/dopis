@@ -1,18 +1,38 @@
 import { ImapFlow } from "imapflow";
+import { decryptData } from "../../utils/cryptography";
 
-export async function GET({ params, request }) {
+export async function GET({ cookies, params, request }) {
+  const credentials = decryptData(cookies.get("auth").value); //get login data from cookie -> decrypts them
+
   const client = new ImapFlow({
-    host: "imap.ionos.de",
-    port: 993,
+    host: credentials[2].host,
+    port: credentials[3].port,
     secure: true,
     auth: {
-      user: import.meta.env.SECRET_USER,
-      pass: import.meta.env.SECRET_PASS,
+      user: credentials[0].user,
+      pass: credentials[1].pass,
     },
   });
 
   try {
-    await client.connect();
+    try {
+      await client.connect();
+      console.log("Connected to IMAP server");
+    } catch (connectError) {
+      console.error("Connection Error:", connectError);
+      return new Response(
+        JSON.stringify({
+          error:
+            "Failed to connect to IMAP server. Please check your credentials.",
+        }),
+        {
+          status: 401,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
 
     let lock = await client.getMailboxLock("INBOX");
 
