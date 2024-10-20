@@ -1,40 +1,10 @@
-# Astro Starter Kit: Basics
+# Dopis
 
-```sh
-npm create astro@latest -- --template basics
-```
+Dopis is an email client designed to sort emails by category, sender, and content. <br>
+Nowadays, hardly anyone uses email as a method of communication anymore. It has become a place to receive adverts, newsletters, or product updates. Dopis is designed to create clarity and structure in this mess, and to help you organize your emails.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+## Build with: [Astro](https://astro.build/), [React](https://react.dev/) and [♥️](https://www.mondmarmelade.com/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/37be5cf0-30a8-45d5-a744-96a737e3d505/deploy-status)](https://dopis.netlify.app/)
 
 ## 🧞 Commands
 
@@ -49,6 +19,8 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+#
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```
+In memory of Franz Kafka, who may have written as many letters as we receive emails today.
+```
