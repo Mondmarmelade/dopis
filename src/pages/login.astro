@@ -1,12 +1,18 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro"
-import { createCookie } from "../scripts/createCookie"; 
+import UnauthLayout from "../layouts/UnauthLayout.astro";
+import { createCookie } from "../scripts/createCookie";
+// import "../styles/GlobalStyle.astro";
 
 if (Astro.request.method === "POST") {
-    console.log("POST")
+  console.log("POST");
   try {
     const data = await Astro.request.formData();
-    const formatData = [{user: data.get("user")}, {pass: data.get("pass")}, {host: data.get("host")}, {port: data.get("port")}]
+    const formatData = [
+      { user: data.get("user") },
+      { pass: data.get("pass") },
+      { host: data.get("host") },
+      { port: data.get("port") },
+    ];
     createCookie({ data: formatData, context: Astro });
   } catch (error) {
     if (error instanceof Error) {
@@ -16,23 +22,94 @@ if (Astro.request.method === "POST") {
 }
 ---
 
-<MainLayout title="Login">
-	<main>
-		<h1>Enter IMAP Credentials</h1>
+<UnauthLayout title="Dashboard">
+  <main>
+    <p class="headline">Enter IMAP Credentials:</p>
     <form id="imap-form" method="POST" action="/login">
-      <label for="user">Username:</label>
-      <input type="text" id="user" name="user" required />
-      <br />
-      <label for="pass">Password:</label>
-      <input type="password" id="pass" name="pass" required />
-      <br />
-      <label for="host">Host:</label>
-      <input type="text" id="host" name="host" value="imap.ionos.de" required />
-      <br />
-      <label for="port">Port:</label>
-      <input type="number" id="port" name="port" value="993" required />
-      <br />
+      <div>
+        <label for="user">Username:</label>
+        <input type="text" id="user" name="user" required />
+      </div>
+      <div>
+        <label for="pass">Password:</label>
+        <input type="password" id="pass" name="pass" required />
+      </div>
+      <div>
+        <label for="host">Host:</label>
+        <input
+          type="text"
+          id="host"
+          name="host"
+          value="imap.ionos.de"
+          required
+        />
+      </div>
+      <div>
+        <label for="port">Port:</label>
+        <input type="number" id="port" name="port" value="993" required />
+      </div>
       <button type="submit">Submit</button>
     </form>
-	</main>
-</MainLayout>
+  </main>
+</UnauthLayout>
+
+<style>
+  main {
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .headline {
+    margin: 0 0 15px 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #3661a4;
+  }
+
+  form {
+    width: 80%;
+
+    @media (min-width: 800px) {
+      width: 60%;
+    }
+
+    @media (min-width: 1200px) {
+      width: 20%;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5px;
+    }
+
+    input {
+      border-width: 1;
+      border-style: solid;
+      background-color: #ededed;
+      outline: none;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 1rem;
+    }
+  }
+
+  input:focus {
+    border-color: black;
+  }
+
+  button {
+    width: 100%;
+    height: 50px;
+    background-color: #3661a4;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+</style>
