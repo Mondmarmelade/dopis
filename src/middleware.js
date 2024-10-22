@@ -1,24 +1,18 @@
 import { defineMiddleware } from "astro/middleware";
 
 export const onRequest = defineMiddleware((context, next) => {
-  console.log("MIDDLEWARE");
+  // console.log("MIDDLEWARE", context.url.pathname);
 
   const authCookie = context.cookies.get("auth");
 
-  if (authCookie) {
-    // User session exists, allow navigation to the requested page
-    return next();
-  } else {
-    // User session does not exist, redirect to the login page
-    if (context.url.pathname !== "/login") {
-      return context.rewrite(
-        new Request(new URL("/login", context.url), {
-          headers: {
-            "x-redirect-to": context.url.pathname,
-          },
-        })
-      );
-    }
+  // If not logged in and on login page -> go to login page
+  if (!authCookie && context.url.pathname !== "/login") {
+    return context.redirect("/login");
+  }
+
+  // If on login page and/(but) logged in -> go to index page
+  if (authCookie && context.url.pathname === "/login") {
+    return context.redirect("/");
   }
 
   return next();
