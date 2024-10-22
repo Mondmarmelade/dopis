@@ -1,10 +1,9 @@
 ---
 import UnauthLayout from "../layouts/UnauthLayout.astro";
 import { createCookie } from "../scripts/createCookie";
-// import "../styles/GlobalStyle.astro";
 
 if (Astro.request.method === "POST") {
-  console.log("POST");
+  // console.log("POST LOGIN");
   try {
     const data = await Astro.request.formData();
     const formatData = [
@@ -14,6 +13,8 @@ if (Astro.request.method === "POST") {
       { port: data.get("port") },
     ];
     createCookie({ data: formatData, context: Astro });
+
+    return Astro.redirect("/");
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
