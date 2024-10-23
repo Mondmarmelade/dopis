@@ -1,6 +1,6 @@
 ---
-import "../styles/Navigation.css"
-import { Icon } from 'astro-icon/components'
+import "../styles/Navigation.css";
+import { Icon } from "astro-icon/components";
 const currentPath = Astro.url.pathname;
 ---
 
@@ -8,11 +8,51 @@ const currentPath = Astro.url.pathname;
   <div class="logo">
     <Icon name="logo" />
   </div>
- <a href="/" class={currentPath === '/' ? 'current' : ''}>  <Icon name="inbox" /> Dashboard</a>
- <a href="/mails" class={currentPath === '/mails' ? 'current' : ''}> <Icon name="mail" /> Mails</a>
- <a href="/newsletters" class={currentPath === '/newsletters' ? 'current' : ''}> <Icon name="news" /> Newsletters</a>
- <a href="/junk" class={currentPath === '/junk' ? 'current' : ''}> <Icon name="chat_warning" /> Junk</a>
- <a href="/settings" class={currentPath === '/settings' ? 'current' : ''}> <Icon name="settings" /> Settings</a>
-
- 
+  <a href="/" class:list={[{ current: currentPath === "/" }]}>
+    {currentPath === "/" ? <Icon name="inbox-filled" /> : <Icon name="inbox" />}
+    Dashboard</a
+  >
+  <a href="/mails" class:list={[{ current: currentPath === "/mails" }]}>
+    {
+      currentPath === "/mails" ? (
+        <Icon name="mail-filled" />
+      ) : (
+        <Icon name="mail" />
+      )
+    }
+    Mails</a
+  >
+  <a
+    href="/newsletters"
+    class:list={[{ current: currentPath === "/newsletters" }]}
+  >
+    {
+      currentPath === "/newsletters" ? (
+        <Icon name="news-filled" />
+      ) : (
+        <Icon name="news" />
+      )
+    }
+    Newsletters</a
+  >
+  <a href="/junk" class:list={[{ current: currentPath === "/junk" }]}>
+    {
+      currentPath === "/chat_warning" ? (
+        <Icon name="chat_warning-filled" />
+      ) : (
+        <Icon name="chat_warning" />
+      )
+    }
+    Junk</a
+  >
+  <a href="/settings" class:list={[{ current: currentPath === "/settings" }]}>
+    {
+      currentPath === "/settings" ? (
+        <Icon name="settings-filled" />
+      ) : (
+        <Icon name="settings" />
+      )
+    }
+    Settings</a
+  >
 </header>

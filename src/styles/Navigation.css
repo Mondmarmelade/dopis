@@ -29,16 +29,24 @@ header {
 
     [data-icon] {
       font-size: 1.5rem;
-      color: #3661a4;
       margin-right: 5px;
+      color: black;
     }
   }
 
   a:hover {
     background-color: #ededed;
+
+    [data-icon] {
+      color: #3661a4;
+    }
   }
 
   a:is(.current) {
     border-left: 2px solid #3661a4;
+
+    [data-icon] {
+      color: #3661a4;
+    }
   }
 }
