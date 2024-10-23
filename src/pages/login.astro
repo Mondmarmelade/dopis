@@ -1,5 +1,6 @@
 ---
 import UnauthLayout from "../layouts/UnauthLayout.astro";
+import { Icon } from "astro-icon/components";
 import { createCookie } from "../scripts/createCookie";
 
 if (Astro.request.method === "POST") {
@@ -25,11 +26,12 @@ if (Astro.request.method === "POST") {
 
 <UnauthLayout title="Dashboard">
   <main>
+    <Icon class="logo" name="logo" />
     <p class="headline">Enter IMAP Credentials:</p>
     <form id="imap-form" method="POST" action="/login">
       <div>
         <label for="user">Username:</label>
-        <input type="text" id="user" name="user" required />
+        <input type="email" id="user" name="user" required />
       </div>
       <div>
         <label for="pass">Password:</label>
@@ -57,12 +59,17 @@ if (Astro.request.method === "POST") {
 <style>
   main {
     width: 100vw;
-    height: 70vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
+
+  .logo {
+    font-size: 4.5rem;
+  }
+
   .headline {
     margin: 0 0 15px 0;
     font-size: 1.8rem;
