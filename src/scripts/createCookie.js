@@ -1,4 +1,4 @@
-import { encryptData, decryptData } from "../utils/cryptography";
+import { encryptData } from "../utils/cryptography";
 
 export function createCookie({ data, context }) {
   if (!context || !context.cookies) {
