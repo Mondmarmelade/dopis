@@ -12,6 +12,7 @@ export async function GET({ cookies, params, request }) {
       user: credentials[0].user,
       pass: credentials[1].pass,
     },
+    logger: false, // activate in dev for better debugging
   });
 
   try {
@@ -37,17 +38,18 @@ export async function GET({ cookies, params, request }) {
     let lock = await client.getMailboxLock("INBOX");
 
     try {
-      let lastMsg = await client.fetchOne("*", {
+      let msgs = [];
+
+      for await (let msg of client.fetch("1:*", {
         uid: true,
-        source: true,
         envelope: true,
-      });
+      })) {
+        msgs.push(msg);
+      }
 
       return new Response(
         JSON.stringify({
-          seq: lastMsg.seq,
-          uid: lastMsg.uid,
-          content: lastMsg.source.toString(),
+          msgs: msgs.reverse(), // reverses order of emails -> so newest mail is first in array
         }),
         {
           status: 200,
