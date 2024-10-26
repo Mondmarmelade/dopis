@@ -1,23 +1,17 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import EmailList from '../components/EmailList';
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Dashboard">
-	<main>
-		<p>Email:</p>
-		<!-- <Fragment set:html={} /> -->
-		<EmailList client:load />
-	</main>
+  <main>
+    <p>Dashboard</p>
+  </main>
 </MainLayout>
 
 <style>
-	main {
-		/* margin: auto; */
-		/* padding: 1rem; */
-		/* width: 800px; */
-		color: black;
-		font-size: 20px;
-		line-height: 1.6;
-	}
+  main {
+    color: black;
+    font-size: 20px;
+    line-height: 1.6;
+  }
 </style>

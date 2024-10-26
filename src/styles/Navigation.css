@@ -20,12 +20,12 @@ header {
   }
 
   a {
-    /* background-color: aqua; */
     padding: 10px;
     text-decoration: none;
     color: black;
     display: flex;
     align-items: center;
+    font-size: 1rem;
 
     [data-icon] {
       font-size: 1.5rem;
