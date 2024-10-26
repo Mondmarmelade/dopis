@@ -1,0 +1,19 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import EmailList from "../components/EmailList";
+---
+
+<MainLayout title="Dashboard">
+  <main>
+    <EmailList client:load />
+  </main>
+</MainLayout>
+
+<style>
+  main {
+    width: 100%;
+    color: black;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+</style>

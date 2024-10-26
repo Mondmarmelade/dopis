@@ -1,0 +1,33 @@
+.email-list-item {
+  height: 50px;
+  padding-inline: 10px;
+  border-bottom: 2px solid #ededed;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.email-list-item:hover {
+  background-color: #f1f7ff;
+}
+
+img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+p {
+  font-size: 1rem;
+}
+
+.address {
+  margin-right: 50px;
+  width: 15%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
