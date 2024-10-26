@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../styles/EmailListItem.css";
 
 const EmailListItem = ({ element }) => {
-  console.log(element);
-
   return (
     <div className="email-list-item" style={{ width: "100%" }}>
       <img
